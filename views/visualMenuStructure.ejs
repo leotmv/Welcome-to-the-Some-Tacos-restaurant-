@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link href="/style/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <h1 class="restaurantName">Welcome to the Some Tacos🌮 restaurant!</h1>
+    <form action="/submit" method="POST">
+       <input type="submit" value="Menu" class="menuButton" name="menu">
+    </form>
+
+    <h2>Choose your dish just clicking!</h2>
+    
+    <form action="/recipe" method="POST" class="buttons">
+        <button type="submit" value="chicken" name="choice">🍗</button>
+        <button type="submit" value="beef" name="choice">🥩</button>
+        <button type="submit" value="fish" name="choice">🐟</button>
+    </form>
+
+    <%if (locals.keyActive === "yes"){%>
+        <div class="spaceIngredients">
+            <h3>Ingrendients: </h3>
+            <ul id="ingredientsList">
+                <li><%=locals.proteinName%>, <%=locals.proteinPreparation%></li>
+            </ul>
+            <h3>Spicy: </h3>
+            <ul id="ingredientsList">
+                <li><%=locals.spicinessAgent %></li>
+                <li><%=locals.spicinessLevel%> (Spiciness level)</li>
+            </ul>
+            <h3>Topping: </h3>
+            <ul id="ingredientsList">
+                <%locals.toppingQuantityName.forEach(topping =>{%>
+                    <li>
+                        <%=topping.quantity%> of <%=topping.name%>
+                    </li>
+                <%})%>
+            </ul>
+        </div>
+    <%}else{%>
+        <h2>Pick your favourite taco ingredient 👆</h2>
+    <%}%> 
+   
+</body>
+</html>
